@@ -1,2 +1,8 @@
-<h1>Contracts#edit</h1>
-<p>Find me in app/views/contracts/edit.html.erb</p>
+<h1><%= @contract.name %></h1>
+
+<%= form_for @contract, url: { action: :update } do |f| %>
+  <%= f.text_field :name %>
+  <%= f.number_field :users_quantity %>
+  <br/>
+  <%= f.submit "更新" %>
+<% end %>
