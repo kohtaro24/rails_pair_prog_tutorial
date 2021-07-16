@@ -5,3 +5,27 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+Call.destroy_all
+Contract.destroy_all
+Plan.destroy_all
+
+Plan.create do |p|
+  p.id = 1
+  p.title = 'Free'
+  p.price = 0
+end
+
+Plan.create do |p|
+  p.id = 2
+  p.title = 'Basic'
+  p.price = 4800
+end
+
+contract = Contract.create!(plan_id: 1, name: '株式会社ホゲホゲ', users_quantity: 5)
+
+Call.create!(contract_id: contract.id, from: '+818012345678', to: '+815011112222', duration: 120, direction: 1, created_at: '2021-06-03 10:00:00')
+Call.create!(contract_id: contract.id, from: '+818012345678', to: '+815011112222', duration: 600, direction: 1, created_at: '2021-06-04 10:00:00')
+Call.create!(contract_id: contract.id, from: '+817055556666', to: '+815011112222', duration: 510, direction: 1, created_at: '2021-07-03 10:00:00')
+Call.create!(contract_id: contract.id, from: '+815011112222', to: '+818012345678', duration: 400, direction: 0, created_at: '2021-07-04 10:00:00')
+Call.create!(contract_id: contract.id, from: '+815011112222', to: '+817055556666', duration: 320, direction: 0, created_at: '2021-07-05 10:00:00')
