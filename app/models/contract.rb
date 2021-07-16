@@ -2,10 +2,16 @@ class Contract < ApplicationRecord
   belongs_to :plan
   has_many :calls
 
+  before_validation :replan
+
   def usage_price
     return 0 if self.plan.free?
 
     base_price + call_price
+  end
+
+  def replan
+    self.plan_id = Plan.suggest_plan_id(self)
   end
 
   private
