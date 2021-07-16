@@ -1,2 +1,25 @@
-<h1>Contracts#show</h1>
-<p>Find me in app/views/contracts/show.html.erb</p>
+<h1><%= @contract.name %></h1>
+
+<p>プラン：<%= @contract.plan.title %></p>
+<p>ユーザ数：<%= @contract.users_quantity %></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>From</th>
+      <th>To</th>
+      <th>Duration</th>
+      <th>Created at</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @contract.calls.each do |call| %>
+      <tr>
+          <td><%= call.from %></td>
+          <td><%= call.to %></td>
+          <td><%= call.duration %></td>
+          <td><%= call.created_at %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
