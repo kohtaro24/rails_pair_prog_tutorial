@@ -1,4 +1,6 @@
 class Contract < ApplicationRecord
+  CALL_PRICE_PER_MINUTE = 1
+
   belongs_to :plan
   has_many :calls
 
@@ -21,6 +23,8 @@ class Contract < ApplicationRecord
   end
 
   def call_price
-    self.calls.sum(&:duration) / 60
+    self.calls.sum do |call|
+      (call.duration / 60.0).ceil * CALL_PRICE_PER_MINUTE
+    end
   end
 end

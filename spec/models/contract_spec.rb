@@ -74,7 +74,7 @@ RSpec.describe Contract, type: :model do
         ]
       end
 
-      it { is_expected.to eq 3 }
+      it { is_expected.to eq 4 }
     end
   end
 end
