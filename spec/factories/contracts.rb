@@ -9,5 +9,15 @@ FactoryBot.define do
     trait :basic do
       plan { FactoryBot.create(:basic_plan) }
     end
+
+    transient do
+      calls_size { 0 }
+    end
+
+    after(:build) do |contract, evaluator|
+      evaluator.calls_size.times do
+        contract.calls << FactoryBot.build(:call)
+      end
+    end
   end
 end
