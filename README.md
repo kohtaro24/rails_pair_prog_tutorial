@@ -3,22 +3,37 @@
 This README would normally document whatever steps are necessary to get the
 application up and running.
 
-Things you may want to cover:
-
 * Ruby version
+    - 2.7.3
 
-* System dependencies
+* Install ruby gems
 
-* Configuration
+```bash
+$ gem install bundler # if needed
+$ bundle
+```
 
 * Database creation
 
+```bash
+$ bundle exec rails db:create
+```  
+
 * Database initialization
+
+```bash
+$ bundle exec rails db:migrate
+$ bundle exec rails db:seed 
+```  
 
 * How to run the test suite
 
-* Services (job queues, cache servers, search engines, etc.)
+```bash
+$ bundle exec rspec spec/
+```  
 
-* Deployment instructions
+* How to run the rails server
 
-* ...
+```bash
+$ bundle exec rails s
+```
