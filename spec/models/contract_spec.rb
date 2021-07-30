@@ -18,9 +18,10 @@ RSpec.describe Contract, type: :model do
 
   describe '#usage_price' do
     let(:contract) { nil }
+
     before do
-      allow_any_instance_of(Contract).to receive(:base_price).and_return(100)
-      allow_any_instance_of(Contract).to receive(:call_price).and_return(10)
+      allow(contract).to receive(:base_price).and_return(100)
+      allow(contract).to receive(:call_price).and_return(10)
     end
     subject { contract.usage_price }
 
